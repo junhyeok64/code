@@ -57,7 +57,7 @@
 		</tr>
 		<?php
 				}
-			} else {
+			} else {  
 		?>
 		<tr>
 			<td colspan="4">none data</td>
