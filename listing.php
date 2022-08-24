@@ -63,7 +63,7 @@
 			<td colspan="4">none data</td>
 		</tr>
 		<?php
-			}
+			} 
 		?>
 	</table>
 </div>
