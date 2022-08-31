@@ -119,7 +119,7 @@
 			$(this).find("span").html("▼")
 		} else {
 			$(this).find("span").html("▲")
-		}
+		}	
 	})
 	
 </script>
