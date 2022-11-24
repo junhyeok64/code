@@ -1,0 +1,42 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+	var arr_ko = ["도","레","미","파","솔","라","시"];
+	var arr_en = ["c","d","e","f","g","a","b"];
+
+	$(document).ready(function(){
+		doreme();
+		$("input[name='val']").focus();
+	})
+	function doreme() {
+		var rand = rand_num(0, 6);
+
+		/*
+		arr_ko[rand]
+		arr_en[rand]
+		*/
+		$(".doreme").html(arr_ko[rand]);
+		$("input[name='answer']").val(arr_en[rand]);
+	}
+
+	function rand_num(min, max) {
+		return Math.floor(Math.random() * (max - min + 1 )) + min;
+	}
+
+	function check() {
+		if($("input[name='answer']").val() == $("input[name='val']").val()) {
+			alert("good");
+			location.reload();
+		} else {
+			alert("nope");
+			$("input[name='val']").val("");
+			$("input[name='val']").focus();
+		}
+	}
+	function enter() {
+		if(window.event.keyCode == 13) { check(); }
+	}
+</script>
+<span class="doreme">asdf</span>
+<input type="hidden" name="answer" value="<?=${'arr_'.$reverse}[$rand]?>">
+<input type="text" name="val" onkeyup="enter();">
+<input type="button" value="확 인"  onclick="check();">
