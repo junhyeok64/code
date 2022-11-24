@@ -3,6 +3,8 @@
 	var arr_ko = ["도","레","미","파","솔","라","시"];
 	var arr_en = ["c","d","e","f","g","a","b"];
 
+	var get_type = getParameter("type");
+
 	$(document).ready(function(){
 		doreme();
 		$("input[name='val']").focus();
@@ -14,8 +16,19 @@
 		arr_ko[rand]
 		arr_en[rand]
 		*/
-		$(".doreme").html(arr_ko[rand]);
-		$("input[name='answer']").val(arr_en[rand]);
+		if(get_type == "en") {
+			$(".doreme").html(arr_en[rand]);
+			$("input[name='answer']").val(arr_ko[rand]);
+		} else {
+			$(".doreme").html(arr_ko[rand]);
+			$("input[name='answer']").val(arr_en[rand]);
+		}
+	}
+	function getParameter(name) {
+	    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+	    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+	        results = regex.exec(location.search);
+	    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 	}
 
 	function rand_num(min, max) {
