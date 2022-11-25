@@ -2,6 +2,7 @@
 <script type="text/javascript">
 	var arr_ko = ["도","레","미","파","솔","라","시"];
 	var arr_en = ["c","d","e","f","g","a","b"];
+	var arr_EN = ["C","D","E","F","G","A","B"];
 
 	var get_type = getParameter("type");
 
@@ -22,6 +23,7 @@
 		} else {
 			$(".doreme").html(arr_ko[rand]);
 			$("input[name='answer']").val(arr_en[rand]);
+			$("input[name='answer']").val(arr_EN[rand]);
 		}
 	}
 	function getParameter(name) {
@@ -36,7 +38,7 @@
 	}
 
 	function check() {
-		if($("input[name='answer']").val() == $("input[name='val']").val()) {
+		if($("input[name='answer']").val() == $("input[name='val']").val() || $("input[name='answer_big']").val() == $("input[name='val']").val()) {
 			alert("good");
 			location.reload();
 		} else {
@@ -50,6 +52,7 @@
 	}
 </script>
 <span class="doreme">asdf</span>
-<input type="hidden" name="answer" value="<?=${'arr_'.$reverse}[$rand]?>">
+<input type="hidden" name="answer" value="">
+<input type="hidden" name="answer_big" value="">
 <input type="text" name="val" onkeyup="enter();">
 <input type="button" value="확 인"  onclick="check();">
