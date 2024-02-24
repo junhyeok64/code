@@ -22,8 +22,6 @@
 		*/
 		$(".hiragana").html(arr_ko[rand]);
 		$(".img_src").attr("src", "./img/hiragana/"+arr_ko[rand]+".png");
-		$("input[name='answer']").val(arr_en[rand]);
-		$("input[name='answer']").val(arr_EN[rand]);
 	}
 	function getParameter(name) {
 	    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
@@ -39,6 +37,7 @@
 	function check() {
 		if($("input[name='page']").val() == "0") {
 			$(".img_div").show();
+			$("input[name='page']").val("1")
 		} else {
 			location.reload();
 		}
