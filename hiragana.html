@@ -1,0 +1,70 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+	var arr_ko = [
+		"아", "이", "우", "에", "오",
+		"카", "키", "쿠", "케", "코",
+		"사", "시", "스", "세", "소",
+		"타", "치", "츠", "테", "토"
+	];
+
+	var get_type = getParameter("type");
+
+	$(document).ready(function(){
+		hiragana();
+		$("input[name='val']").focus();
+	})
+	function hiragana() {
+		var rand = rand_num(0, 21);
+
+		/*
+		arr_ko[rand]
+		arr_en[rand]
+		*/
+		$(".hiragana").html(arr_ko[rand]);
+		$(".img_src").attr("src", "./img/hiragana/"+arr_ko[rand]+".png");
+		$("input[name='answer']").val(arr_en[rand]);
+		$("input[name='answer']").val(arr_EN[rand]);
+	}
+	function getParameter(name) {
+	    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+	    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+	        results = regex.exec(location.search);
+	    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+	}
+
+	function rand_num(min, max) {
+		return Math.floor(Math.random() * (max - min + 1 )) + min;
+	}
+
+	function check() {
+		if($("input[name='page']").val() == "0") {
+			$(".img_div").show();
+		} else {
+			location.reload();
+		}
+		// if($("input[name='answer']").val() == $("input[name='val']").val() || $("input[name='answer_big']").val() == $("input[name='val']").val()) {
+		// 	alert("good");
+		// 	location.reload();
+		// } else {
+		// 	alert("nope");
+		// 	$("input[name='val']").val("");
+		// 	$("input[name='val']").focus();
+		// }
+	}
+	function enter() {
+		if(window.event.keyCode == 13) { check(); }
+	}
+</script>
+<div style="text-align: center;width: 100%;">
+	<span class="hiragana" style="font-size: 70px;">asdf</span>
+	<div>
+		<input type="hidden" name="answer" value="">
+		<input type="hidden" name="answer_big" value="">
+		<!-- <input type="text" name="val" onkeyup="enter();"> -->
+		<input type="hidden" name="page" value="0">
+		<input type="button" value="다 음"  onclick="check();">
+	</div>
+	<div class="img_div" style="display: none;">
+		<img class="img_src" src="./img/japanese.png">
+	</div>
+</div>
